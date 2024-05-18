@@ -1,0 +1,42 @@
+syntax = "proto3";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "./go/auth_service";
+
+message SendOtpReq {
+    // number of the user to send otp to
+    string phoneNumber = 1;
+}
+message SendOtpResp {
+    // send this token in the call to the VerifyOtp along with the otp to verify the user and get the access token
+    string otpReqToken = 1;
+}
+
+message VerifyOtpReq{
+    string otpReqToken = 1;
+    string otp = 2;
+}
+
+message AccessToken {
+    string token = 1;
+    string userId = 2;
+    repeated string scopes = 3;
+    google.protobuf.Timestamp expirationTime = 4;
+}
+
+message SessionToken {
+    string token = 1;
+    string userId = 2;
+    google.protobuf.Timestamp expirationTime = 3;
+}
+
+service AuthService{
+    // sends otp based on the request data
+    rpc SendOtp(SendOtpReq) returns (SendOtpResp);
+
+    // verify the otp
+    rpc VerifyOtp(VerifyOtpReq) returns (AccessToken);
+
+    // get session token
+    rpc GetSessionToken(AccessToken) returns (SessionToken);
+}
