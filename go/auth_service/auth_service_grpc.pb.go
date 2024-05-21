@@ -25,9 +25,9 @@ type AuthServiceClient interface {
 	// sends otp based on the request data
 	SendOtp(ctx context.Context, in *SendOtpReq, opts ...grpc.CallOption) (*SendOtpResp, error)
 	// verify the otp
-	VerifyOtp(ctx context.Context, in *VerifyOtpReq, opts ...grpc.CallOption) (*AccessToken, error)
+	VerifyOtp(ctx context.Context, in *VerifyOtpReq, opts ...grpc.CallOption) (*VerifyOtpResp, error)
 	// get session token
-	GetSessionToken(ctx context.Context, in *AccessToken, opts ...grpc.CallOption) (*SessionToken, error)
+	GetSessionToken(ctx context.Context, in *GetSessionTokenReq, opts ...grpc.CallOption) (*GetSessionTokenResp, error)
 }
 
 type authServiceClient struct {
@@ -47,8 +47,8 @@ func (c *authServiceClient) SendOtp(ctx context.Context, in *SendOtpReq, opts ..
 	return out, nil
 }
 
-func (c *authServiceClient) VerifyOtp(ctx context.Context, in *VerifyOtpReq, opts ...grpc.CallOption) (*AccessToken, error) {
-	out := new(AccessToken)
+func (c *authServiceClient) VerifyOtp(ctx context.Context, in *VerifyOtpReq, opts ...grpc.CallOption) (*VerifyOtpResp, error) {
+	out := new(VerifyOtpResp)
 	err := c.cc.Invoke(ctx, "/AuthService/VerifyOtp", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -56,8 +56,8 @@ func (c *authServiceClient) VerifyOtp(ctx context.Context, in *VerifyOtpReq, opt
 	return out, nil
 }
 
-func (c *authServiceClient) GetSessionToken(ctx context.Context, in *AccessToken, opts ...grpc.CallOption) (*SessionToken, error) {
-	out := new(SessionToken)
+func (c *authServiceClient) GetSessionToken(ctx context.Context, in *GetSessionTokenReq, opts ...grpc.CallOption) (*GetSessionTokenResp, error) {
+	out := new(GetSessionTokenResp)
 	err := c.cc.Invoke(ctx, "/AuthService/GetSessionToken", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -72,9 +72,9 @@ type AuthServiceServer interface {
 	// sends otp based on the request data
 	SendOtp(context.Context, *SendOtpReq) (*SendOtpResp, error)
 	// verify the otp
-	VerifyOtp(context.Context, *VerifyOtpReq) (*AccessToken, error)
+	VerifyOtp(context.Context, *VerifyOtpReq) (*VerifyOtpResp, error)
 	// get session token
-	GetSessionToken(context.Context, *AccessToken) (*SessionToken, error)
+	GetSessionToken(context.Context, *GetSessionTokenReq) (*GetSessionTokenResp, error)
 	mustEmbedUnimplementedAuthServiceServer()
 }
 
@@ -85,10 +85,10 @@ type UnimplementedAuthServiceServer struct {
 func (UnimplementedAuthServiceServer) SendOtp(context.Context, *SendOtpReq) (*SendOtpResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SendOtp not implemented")
 }
-func (UnimplementedAuthServiceServer) VerifyOtp(context.Context, *VerifyOtpReq) (*AccessToken, error) {
+func (UnimplementedAuthServiceServer) VerifyOtp(context.Context, *VerifyOtpReq) (*VerifyOtpResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method VerifyOtp not implemented")
 }
-func (UnimplementedAuthServiceServer) GetSessionToken(context.Context, *AccessToken) (*SessionToken, error) {
+func (UnimplementedAuthServiceServer) GetSessionToken(context.Context, *GetSessionTokenReq) (*GetSessionTokenResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetSessionToken not implemented")
 }
 func (UnimplementedAuthServiceServer) mustEmbedUnimplementedAuthServiceServer() {}
@@ -141,7 +141,7 @@ func _AuthService_VerifyOtp_Handler(srv interface{}, ctx context.Context, dec fu
 }
 
 func _AuthService_GetSessionToken_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AccessToken)
+	in := new(GetSessionTokenReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -153,7 +153,7 @@ func _AuthService_GetSessionToken_Handler(srv interface{}, ctx context.Context, 
 		FullMethod: "/AuthService/GetSessionToken",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthServiceServer).GetSessionToken(ctx, req.(*AccessToken))
+		return srv.(AuthServiceServer).GetSessionToken(ctx, req.(*GetSessionTokenReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
