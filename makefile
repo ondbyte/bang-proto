@@ -12,3 +12,10 @@ go-proto:
 	protoc --go_out=. --go-grpc_out=. *.proto
 	@echo "Go code generated successfully!"
 	go mod tidy
+
+	
+dart-proto:
+	@echo "Generating Dart code from Protocol Buffers..."
+	protoc --dart_out=dart *.proto
+	@echo "Dart code generated successfully!"
+	dart pub get

@@ -1,4 +1,4 @@
-module github.com/ondbyte/bang-proto
+module github.com/ondbyte/bang_proto
 
 go 1.22.0
 
