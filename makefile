@@ -16,6 +16,6 @@ go-proto:
 	
 dart-proto:
 	@echo "Generating Dart code from Protocol Buffers..."
-	protoc --dart_out=dart *.proto
+	protoc --dart_out=lib *.proto
 	@echo "Dart code generated successfully!"
 	dart pub get
