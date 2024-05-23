@@ -9,7 +9,6 @@
 // ignore_for_file: non_constant_identifier_names, prefer_final_fields
 // ignore_for_file: unnecessary_import, unnecessary_this, unused_import
 
-import 'dart:async' as $async;
 import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
@@ -370,21 +369,6 @@ class GetSessionTokenResp extends $pb.GeneratedMessage {
   $core.bool hasError() => $_has(1);
   @$pb.TagNumber(2)
   void clearError() => clearField(2);
-}
-
-class AuthServiceApi {
-  $pb.RpcClient _client;
-  AuthServiceApi(this._client);
-
-  $async.Future<SendOtpResp> sendOtp($pb.ClientContext? ctx, SendOtpReq request) =>
-    _client.invoke<SendOtpResp>(ctx, 'AuthService', 'SendOtp', request, SendOtpResp())
-  ;
-  $async.Future<VerifyOtpResp> verifyOtp($pb.ClientContext? ctx, VerifyOtpReq request) =>
-    _client.invoke<VerifyOtpResp>(ctx, 'AuthService', 'VerifyOtp', request, VerifyOtpResp())
-  ;
-  $async.Future<GetSessionTokenResp> getSessionToken($pb.ClientContext? ctx, GetSessionTokenReq request) =>
-    _client.invoke<GetSessionTokenResp>(ctx, 'AuthService', 'GetSessionToken', request, GetSessionTokenResp())
-  ;
 }
 
 

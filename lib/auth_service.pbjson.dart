@@ -93,28 +93,3 @@ final $typed_data.Uint8List getSessionTokenRespDescriptor = $convert.base64Decod
     'ChNHZXRTZXNzaW9uVG9rZW5SZXNwEiIKDHNlc3Npb25Ub2tlbhgBIAEoCVIMc2Vzc2lvblRva2'
     'VuEhQKBWVycm9yGAIgASgJUgVlcnJvcg==');
 
-const $core.Map<$core.String, $core.dynamic> AuthServiceBase$json = {
-  '1': 'AuthService',
-  '2': [
-    {'1': 'SendOtp', '2': '.SendOtpReq', '3': '.SendOtpResp'},
-    {'1': 'VerifyOtp', '2': '.VerifyOtpReq', '3': '.VerifyOtpResp'},
-    {'1': 'GetSessionToken', '2': '.GetSessionTokenReq', '3': '.GetSessionTokenResp'},
-  ],
-};
-
-@$core.Deprecated('Use authServiceDescriptor instead')
-const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> AuthServiceBase$messageJson = {
-  '.SendOtpReq': SendOtpReq$json,
-  '.SendOtpResp': SendOtpResp$json,
-  '.VerifyOtpReq': VerifyOtpReq$json,
-  '.VerifyOtpResp': VerifyOtpResp$json,
-  '.GetSessionTokenReq': GetSessionTokenReq$json,
-  '.GetSessionTokenResp': GetSessionTokenResp$json,
-};
-
-/// Descriptor for `AuthService`. Decode as a `google.protobuf.ServiceDescriptorProto`.
-final $typed_data.Uint8List authServiceDescriptor = $convert.base64Decode(
-    'CgtBdXRoU2VydmljZRIkCgdTZW5kT3RwEgsuU2VuZE90cFJlcRoMLlNlbmRPdHBSZXNwEioKCV'
-    'ZlcmlmeU90cBINLlZlcmlmeU90cFJlcRoOLlZlcmlmeU90cFJlc3ASPAoPR2V0U2Vzc2lvblRv'
-    'a2VuEhMuR2V0U2Vzc2lvblRva2VuUmVxGhQuR2V0U2Vzc2lvblRva2VuUmVzcA==');
-
