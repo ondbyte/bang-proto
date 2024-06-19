@@ -15,30 +15,30 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'auth_service.pb.dart' as $0;
+import 'auth_service.pb.dart' as $1;
 import 'auth_service.pbjson.dart';
 
 export 'auth_service.pb.dart';
 
 abstract class AuthServiceBase extends $pb.GeneratedService {
-  $async.Future<$0.SendOtpResp> sendOtp($pb.ServerContext ctx, $0.SendOtpReq request);
-  $async.Future<$0.VerifyOtpResp> verifyOtp($pb.ServerContext ctx, $0.VerifyOtpReq request);
-  $async.Future<$0.GetSessionTokenResp> getSessionToken($pb.ServerContext ctx, $0.GetSessionTokenReq request);
+  $async.Future<$1.SendOtpResp> sendOtp($pb.ServerContext ctx, $1.SendOtpReq request);
+  $async.Future<$1.VerifyOtpResp> verifyOtp($pb.ServerContext ctx, $1.VerifyOtpReq request);
+  $async.Future<$1.GetSessionTokenResp> getSessionToken($pb.ServerContext ctx, $1.GetSessionTokenReq request);
 
   $pb.GeneratedMessage createRequest($core.String methodName) {
     switch (methodName) {
-      case 'SendOtp': return $0.SendOtpReq();
-      case 'VerifyOtp': return $0.VerifyOtpReq();
-      case 'GetSessionToken': return $0.GetSessionTokenReq();
+      case 'SendOtp': return $1.SendOtpReq();
+      case 'VerifyOtp': return $1.VerifyOtpReq();
+      case 'GetSessionToken': return $1.GetSessionTokenReq();
       default: throw $core.ArgumentError('Unknown method: $methodName');
     }
   }
 
   $async.Future<$pb.GeneratedMessage> handleCall($pb.ServerContext ctx, $core.String methodName, $pb.GeneratedMessage request) {
     switch (methodName) {
-      case 'SendOtp': return this.sendOtp(ctx, request as $0.SendOtpReq);
-      case 'VerifyOtp': return this.verifyOtp(ctx, request as $0.VerifyOtpReq);
-      case 'GetSessionToken': return this.getSessionToken(ctx, request as $0.GetSessionTokenReq);
+      case 'SendOtp': return this.sendOtp(ctx, request as $1.SendOtpReq);
+      case 'VerifyOtp': return this.verifyOtp(ctx, request as $1.VerifyOtpReq);
+      case 'GetSessionToken': return this.getSessionToken(ctx, request as $1.GetSessionTokenReq);
       default: throw $core.ArgumentError('Unknown method: $methodName');
     }
   }

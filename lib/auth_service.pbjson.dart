@@ -13,6 +13,8 @@ import 'dart:convert' as $convert;
 import 'dart:core' as $core;
 import 'dart:typed_data' as $typed_data;
 
+import 'google/protobuf/timestamp.pbjson.dart' as $0;
+
 @$core.Deprecated('Use sendOtpReqDescriptor instead')
 const SendOtpReq$json = {
   '1': 'SendOtpReq',
@@ -30,14 +32,14 @@ const SendOtpResp$json = {
   '1': 'SendOtpResp',
   '2': [
     {'1': 'otpReqToken', '3': 1, '4': 1, '5': 9, '10': 'otpReqToken'},
-    {'1': 'error', '3': 2, '4': 1, '5': 9, '10': 'error'},
+    {'1': 'validTill', '3': 2, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'validTill'},
   ],
 };
 
 /// Descriptor for `SendOtpResp`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List sendOtpRespDescriptor = $convert.base64Decode(
-    'CgtTZW5kT3RwUmVzcBIgCgtvdHBSZXFUb2tlbhgBIAEoCVILb3RwUmVxVG9rZW4SFAoFZXJyb3'
-    'IYAiABKAlSBWVycm9y');
+    'CgtTZW5kT3RwUmVzcBIgCgtvdHBSZXFUb2tlbhgBIAEoCVILb3RwUmVxVG9rZW4SOAoJdmFsaW'
+    'RUaWxsGAIgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcFIJdmFsaWRUaWxs');
 
 @$core.Deprecated('Use verifyOtpReqDescriptor instead')
 const VerifyOtpReq$json = {
@@ -58,14 +60,12 @@ const VerifyOtpResp$json = {
   '1': 'VerifyOtpResp',
   '2': [
     {'1': 'accessToken', '3': 1, '4': 1, '5': 9, '10': 'accessToken'},
-    {'1': 'error', '3': 2, '4': 1, '5': 9, '10': 'error'},
   ],
 };
 
 /// Descriptor for `VerifyOtpResp`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List verifyOtpRespDescriptor = $convert.base64Decode(
-    'Cg1WZXJpZnlPdHBSZXNwEiAKC2FjY2Vzc1Rva2VuGAEgASgJUgthY2Nlc3NUb2tlbhIUCgVlcn'
-    'JvchgCIAEoCVIFZXJyb3I=');
+    'Cg1WZXJpZnlPdHBSZXNwEiAKC2FjY2Vzc1Rva2VuGAEgASgJUgthY2Nlc3NUb2tlbg==');
 
 @$core.Deprecated('Use getSessionTokenReqDescriptor instead')
 const GetSessionTokenReq$json = {
@@ -84,14 +84,13 @@ const GetSessionTokenResp$json = {
   '1': 'GetSessionTokenResp',
   '2': [
     {'1': 'sessionToken', '3': 1, '4': 1, '5': 9, '10': 'sessionToken'},
-    {'1': 'error', '3': 2, '4': 1, '5': 9, '10': 'error'},
   ],
 };
 
 /// Descriptor for `GetSessionTokenResp`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List getSessionTokenRespDescriptor = $convert.base64Decode(
     'ChNHZXRTZXNzaW9uVG9rZW5SZXNwEiIKDHNlc3Npb25Ub2tlbhgBIAEoCVIMc2Vzc2lvblRva2'
-    'VuEhQKBWVycm9yGAIgASgJUgVlcnJvcg==');
+    'Vu');
 
 const $core.Map<$core.String, $core.dynamic> AuthServiceBase$json = {
   '1': 'AuthService',
@@ -106,6 +105,7 @@ const $core.Map<$core.String, $core.dynamic> AuthServiceBase$json = {
 const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> AuthServiceBase$messageJson = {
   '.SendOtpReq': SendOtpReq$json,
   '.SendOtpResp': SendOtpResp$json,
+  '.google.protobuf.Timestamp': $0.Timestamp$json,
   '.VerifyOtpReq': VerifyOtpReq$json,
   '.VerifyOtpResp': VerifyOtpResp$json,
   '.GetSessionTokenReq': GetSessionTokenReq$json,

@@ -14,15 +14,17 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
+import 'google/protobuf/timestamp.pb.dart' as $0;
+
 class SendOtpReq extends $pb.GeneratedMessage {
   factory SendOtpReq({
     $core.String? phoneNumber,
   }) {
-    final result = create();
+    final $result = create();
     if (phoneNumber != null) {
-      result.phoneNumber = phoneNumber;
+      $result.phoneNumber = phoneNumber;
     }
-    return result;
+    return $result;
   }
   SendOtpReq._() : super();
   factory SendOtpReq.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
@@ -68,16 +70,16 @@ class SendOtpReq extends $pb.GeneratedMessage {
 class SendOtpResp extends $pb.GeneratedMessage {
   factory SendOtpResp({
     $core.String? otpReqToken,
-    $core.String? error,
+    $0.Timestamp? validTill,
   }) {
-    final result = create();
+    final $result = create();
     if (otpReqToken != null) {
-      result.otpReqToken = otpReqToken;
+      $result.otpReqToken = otpReqToken;
     }
-    if (error != null) {
-      result.error = error;
+    if (validTill != null) {
+      $result.validTill = validTill;
     }
-    return result;
+    return $result;
   }
   SendOtpResp._() : super();
   factory SendOtpResp.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
@@ -85,7 +87,7 @@ class SendOtpResp extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SendOtpResp', createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'otpReqToken', protoName: 'otpReqToken')
-    ..aOS(2, _omitFieldNames ? '' : 'error')
+    ..aOM<$0.Timestamp>(2, _omitFieldNames ? '' : 'validTill', protoName: 'validTill', subBuilder: $0.Timestamp.create)
     ..hasRequiredFields = false
   ;
 
@@ -121,13 +123,15 @@ class SendOtpResp extends $pb.GeneratedMessage {
   void clearOtpReqToken() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get error => $_getSZ(1);
+  $0.Timestamp get validTill => $_getN(1);
   @$pb.TagNumber(2)
-  set error($core.String v) { $_setString(1, v); }
+  set validTill($0.Timestamp v) { setField(2, v); }
   @$pb.TagNumber(2)
-  $core.bool hasError() => $_has(1);
+  $core.bool hasValidTill() => $_has(1);
   @$pb.TagNumber(2)
-  void clearError() => clearField(2);
+  void clearValidTill() => clearField(2);
+  @$pb.TagNumber(2)
+  $0.Timestamp ensureValidTill() => $_ensure(1);
 }
 
 class VerifyOtpReq extends $pb.GeneratedMessage {
@@ -135,14 +139,14 @@ class VerifyOtpReq extends $pb.GeneratedMessage {
     $core.String? otpReqToken,
     $core.String? otp,
   }) {
-    final result = create();
+    final $result = create();
     if (otpReqToken != null) {
-      result.otpReqToken = otpReqToken;
+      $result.otpReqToken = otpReqToken;
     }
     if (otp != null) {
-      result.otp = otp;
+      $result.otp = otp;
     }
-    return result;
+    return $result;
   }
   VerifyOtpReq._() : super();
   factory VerifyOtpReq.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
@@ -197,16 +201,12 @@ class VerifyOtpReq extends $pb.GeneratedMessage {
 class VerifyOtpResp extends $pb.GeneratedMessage {
   factory VerifyOtpResp({
     $core.String? accessToken,
-    $core.String? error,
   }) {
-    final result = create();
+    final $result = create();
     if (accessToken != null) {
-      result.accessToken = accessToken;
+      $result.accessToken = accessToken;
     }
-    if (error != null) {
-      result.error = error;
-    }
-    return result;
+    return $result;
   }
   VerifyOtpResp._() : super();
   factory VerifyOtpResp.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
@@ -214,7 +214,6 @@ class VerifyOtpResp extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'VerifyOtpResp', createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'accessToken', protoName: 'accessToken')
-    ..aOS(2, _omitFieldNames ? '' : 'error')
     ..hasRequiredFields = false
   ;
 
@@ -247,26 +246,17 @@ class VerifyOtpResp extends $pb.GeneratedMessage {
   $core.bool hasAccessToken() => $_has(0);
   @$pb.TagNumber(1)
   void clearAccessToken() => clearField(1);
-
-  @$pb.TagNumber(2)
-  $core.String get error => $_getSZ(1);
-  @$pb.TagNumber(2)
-  set error($core.String v) { $_setString(1, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasError() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearError() => clearField(2);
 }
 
 class GetSessionTokenReq extends $pb.GeneratedMessage {
   factory GetSessionTokenReq({
     $core.String? accessToken,
   }) {
-    final result = create();
+    final $result = create();
     if (accessToken != null) {
-      result.accessToken = accessToken;
+      $result.accessToken = accessToken;
     }
-    return result;
+    return $result;
   }
   GetSessionTokenReq._() : super();
   factory GetSessionTokenReq.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
@@ -311,16 +301,12 @@ class GetSessionTokenReq extends $pb.GeneratedMessage {
 class GetSessionTokenResp extends $pb.GeneratedMessage {
   factory GetSessionTokenResp({
     $core.String? sessionToken,
-    $core.String? error,
   }) {
-    final result = create();
+    final $result = create();
     if (sessionToken != null) {
-      result.sessionToken = sessionToken;
+      $result.sessionToken = sessionToken;
     }
-    if (error != null) {
-      result.error = error;
-    }
-    return result;
+    return $result;
   }
   GetSessionTokenResp._() : super();
   factory GetSessionTokenResp.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
@@ -328,7 +314,6 @@ class GetSessionTokenResp extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'GetSessionTokenResp', createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'sessionToken', protoName: 'sessionToken')
-    ..aOS(2, _omitFieldNames ? '' : 'error')
     ..hasRequiredFields = false
   ;
 
@@ -361,15 +346,6 @@ class GetSessionTokenResp extends $pb.GeneratedMessage {
   $core.bool hasSessionToken() => $_has(0);
   @$pb.TagNumber(1)
   void clearSessionToken() => clearField(1);
-
-  @$pb.TagNumber(2)
-  $core.String get error => $_getSZ(1);
-  @$pb.TagNumber(2)
-  set error($core.String v) { $_setString(1, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasError() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearError() => clearField(2);
 }
 
 class AuthServiceApi {
