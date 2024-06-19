@@ -9,12 +9,11 @@
 // ignore_for_file: non_constant_identifier_names, prefer_final_fields
 // ignore_for_file: unnecessary_import, unnecessary_this, unused_import
 
-import 'dart:async' as $async;
 import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'google/protobuf/timestamp.pb.dart' as $0;
+import 'google/protobuf/timestamp.pb.dart' as $1;
 
 class SendOtpReq extends $pb.GeneratedMessage {
   factory SendOtpReq({
@@ -70,7 +69,7 @@ class SendOtpReq extends $pb.GeneratedMessage {
 class SendOtpResp extends $pb.GeneratedMessage {
   factory SendOtpResp({
     $core.String? otpReqToken,
-    $0.Timestamp? validTill,
+    $1.Timestamp? validTill,
   }) {
     final $result = create();
     if (otpReqToken != null) {
@@ -87,7 +86,7 @@ class SendOtpResp extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SendOtpResp', createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'otpReqToken', protoName: 'otpReqToken')
-    ..aOM<$0.Timestamp>(2, _omitFieldNames ? '' : 'validTill', protoName: 'validTill', subBuilder: $0.Timestamp.create)
+    ..aOM<$1.Timestamp>(2, _omitFieldNames ? '' : 'validTill', protoName: 'validTill', subBuilder: $1.Timestamp.create)
     ..hasRequiredFields = false
   ;
 
@@ -123,15 +122,15 @@ class SendOtpResp extends $pb.GeneratedMessage {
   void clearOtpReqToken() => clearField(1);
 
   @$pb.TagNumber(2)
-  $0.Timestamp get validTill => $_getN(1);
+  $1.Timestamp get validTill => $_getN(1);
   @$pb.TagNumber(2)
-  set validTill($0.Timestamp v) { setField(2, v); }
+  set validTill($1.Timestamp v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasValidTill() => $_has(1);
   @$pb.TagNumber(2)
   void clearValidTill() => clearField(2);
   @$pb.TagNumber(2)
-  $0.Timestamp ensureValidTill() => $_ensure(1);
+  $1.Timestamp ensureValidTill() => $_ensure(1);
 }
 
 class VerifyOtpReq extends $pb.GeneratedMessage {
@@ -346,21 +345,6 @@ class GetSessionTokenResp extends $pb.GeneratedMessage {
   $core.bool hasSessionToken() => $_has(0);
   @$pb.TagNumber(1)
   void clearSessionToken() => clearField(1);
-}
-
-class AuthServiceApi {
-  $pb.RpcClient _client;
-  AuthServiceApi(this._client);
-
-  $async.Future<SendOtpResp> sendOtp($pb.ClientContext? ctx, SendOtpReq request) =>
-    _client.invoke<SendOtpResp>(ctx, 'AuthService', 'SendOtp', request, SendOtpResp())
-  ;
-  $async.Future<VerifyOtpResp> verifyOtp($pb.ClientContext? ctx, VerifyOtpReq request) =>
-    _client.invoke<VerifyOtpResp>(ctx, 'AuthService', 'VerifyOtp', request, VerifyOtpResp())
-  ;
-  $async.Future<GetSessionTokenResp> getSessionToken($pb.ClientContext? ctx, GetSessionTokenReq request) =>
-    _client.invoke<GetSessionTokenResp>(ctx, 'AuthService', 'GetSessionToken', request, GetSessionTokenResp())
-  ;
 }
 
 

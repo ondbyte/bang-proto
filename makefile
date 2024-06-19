@@ -26,7 +26,7 @@ dart-proto:
 	@echo "Deleting any existing dart code at 'lib/*'"
 	rm -rf lib/* 2>/dev/null || true
 	@echo "Generating Dart code from Protocol Buffers..."
-	protoc --dart_out=./lib google/protobuf/timestamp.proto ./*.proto
+	protoc --dart_out=grpc:./lib google/protobuf/timestamp.proto ./*.proto
 	@echo "Dart code generated successfully!"
 	dart pub get
 
