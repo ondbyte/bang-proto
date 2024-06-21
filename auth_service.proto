@@ -4,14 +4,27 @@ import "google/protobuf/timestamp.proto";
 
 option go_package = "./go/auth_service";
 
+message AccessClaims {
+    int64 userId = 1;
+    string phoneNumber = 2;
+    google.protobuf.Timestamp iat = 3;
+}
+
+message SessionClaims {
+    int64 userId = 1;
+    string phoneNumber = 2;
+    google.protobuf.Timestamp iat = 3;
+}
+
+message OtpClaims {
+    string otp = 1;
+    string phoneNumber = 2;
+    google.protobuf.Timestamp iat = 3;
+}
+
 message SendOtpReq {
     // number of the user to send otp to
     string phoneNumber = 1;
-}
-message SendOtpResp {
-    // send this token in the call to the VerifyOtp along with the otp to verify the user and get the access token
-    string otpReqToken = 1;
-    google.protobuf.Timestamp validTill= 2;
 }
 
 message VerifyOtpReq{
@@ -19,25 +32,13 @@ message VerifyOtpReq{
     string otp = 2;
 }
 
-message VerifyOtpResp{
-    string accessToken = 1;
-}
-
-message GetSessionTokenReq{
-    string accessToken = 1;
-}
-
-message GetSessionTokenResp{
-    string sessionToken = 1;
-}
-
 service AuthService{
     // sends otp based on the request data
-    rpc SendOtp(SendOtpReq) returns (SendOtpResp);
+    rpc SendOtp(SendOtpReq) returns (OtpClaims);
 
     // verify the otp
-    rpc VerifyOtp(VerifyOtpReq) returns (VerifyOtpResp);
+    rpc VerifyOtp(VerifyOtpReq) returns (AccessClaims);
 
     // get session token
-    rpc GetSessionToken(GetSessionTokenReq) returns (GetSessionTokenResp);
+    rpc GetSessionToken(AccessClaims) returns (SessionClaims);
 }

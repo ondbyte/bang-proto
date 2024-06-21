@@ -21,6 +21,195 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type AccessClaims struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	UserId      int64                `protobuf:"varint,1,opt,name=userId,proto3" json:"userId,omitempty"`
+	PhoneNumber string               `protobuf:"bytes,2,opt,name=phoneNumber,proto3" json:"phoneNumber,omitempty"`
+	Iat         *timestamp.Timestamp `protobuf:"bytes,3,opt,name=iat,proto3" json:"iat,omitempty"`
+}
+
+func (x *AccessClaims) Reset() {
+	*x = AccessClaims{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_auth_service_proto_msgTypes[0]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *AccessClaims) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AccessClaims) ProtoMessage() {}
+
+func (x *AccessClaims) ProtoReflect() protoreflect.Message {
+	mi := &file_auth_service_proto_msgTypes[0]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AccessClaims.ProtoReflect.Descriptor instead.
+func (*AccessClaims) Descriptor() ([]byte, []int) {
+	return file_auth_service_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *AccessClaims) GetUserId() int64 {
+	if x != nil {
+		return x.UserId
+	}
+	return 0
+}
+
+func (x *AccessClaims) GetPhoneNumber() string {
+	if x != nil {
+		return x.PhoneNumber
+	}
+	return ""
+}
+
+func (x *AccessClaims) GetIat() *timestamp.Timestamp {
+	if x != nil {
+		return x.Iat
+	}
+	return nil
+}
+
+type SessionClaims struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	UserId      int64                `protobuf:"varint,1,opt,name=userId,proto3" json:"userId,omitempty"`
+	PhoneNumber string               `protobuf:"bytes,2,opt,name=phoneNumber,proto3" json:"phoneNumber,omitempty"`
+	Iat         *timestamp.Timestamp `protobuf:"bytes,3,opt,name=iat,proto3" json:"iat,omitempty"`
+}
+
+func (x *SessionClaims) Reset() {
+	*x = SessionClaims{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_auth_service_proto_msgTypes[1]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *SessionClaims) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SessionClaims) ProtoMessage() {}
+
+func (x *SessionClaims) ProtoReflect() protoreflect.Message {
+	mi := &file_auth_service_proto_msgTypes[1]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SessionClaims.ProtoReflect.Descriptor instead.
+func (*SessionClaims) Descriptor() ([]byte, []int) {
+	return file_auth_service_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *SessionClaims) GetUserId() int64 {
+	if x != nil {
+		return x.UserId
+	}
+	return 0
+}
+
+func (x *SessionClaims) GetPhoneNumber() string {
+	if x != nil {
+		return x.PhoneNumber
+	}
+	return ""
+}
+
+func (x *SessionClaims) GetIat() *timestamp.Timestamp {
+	if x != nil {
+		return x.Iat
+	}
+	return nil
+}
+
+type OtpClaims struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Otp         string               `protobuf:"bytes,1,opt,name=otp,proto3" json:"otp,omitempty"`
+	PhoneNumber string               `protobuf:"bytes,2,opt,name=phoneNumber,proto3" json:"phoneNumber,omitempty"`
+	Iat         *timestamp.Timestamp `protobuf:"bytes,3,opt,name=iat,proto3" json:"iat,omitempty"`
+}
+
+func (x *OtpClaims) Reset() {
+	*x = OtpClaims{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_auth_service_proto_msgTypes[2]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *OtpClaims) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*OtpClaims) ProtoMessage() {}
+
+func (x *OtpClaims) ProtoReflect() protoreflect.Message {
+	mi := &file_auth_service_proto_msgTypes[2]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use OtpClaims.ProtoReflect.Descriptor instead.
+func (*OtpClaims) Descriptor() ([]byte, []int) {
+	return file_auth_service_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *OtpClaims) GetOtp() string {
+	if x != nil {
+		return x.Otp
+	}
+	return ""
+}
+
+func (x *OtpClaims) GetPhoneNumber() string {
+	if x != nil {
+		return x.PhoneNumber
+	}
+	return ""
+}
+
+func (x *OtpClaims) GetIat() *timestamp.Timestamp {
+	if x != nil {
+		return x.Iat
+	}
+	return nil
+}
+
 type SendOtpReq struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -33,7 +222,7 @@ type SendOtpReq struct {
 func (x *SendOtpReq) Reset() {
 	*x = SendOtpReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_auth_service_proto_msgTypes[0]
+		mi := &file_auth_service_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -46,7 +235,7 @@ func (x *SendOtpReq) String() string {
 func (*SendOtpReq) ProtoMessage() {}
 
 func (x *SendOtpReq) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_service_proto_msgTypes[0]
+	mi := &file_auth_service_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -59,7 +248,7 @@ func (x *SendOtpReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SendOtpReq.ProtoReflect.Descriptor instead.
 func (*SendOtpReq) Descriptor() ([]byte, []int) {
-	return file_auth_service_proto_rawDescGZIP(), []int{0}
+	return file_auth_service_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *SendOtpReq) GetPhoneNumber() string {
@@ -67,62 +256,6 @@ func (x *SendOtpReq) GetPhoneNumber() string {
 		return x.PhoneNumber
 	}
 	return ""
-}
-
-type SendOtpResp struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	// send this token in the call to the VerifyOtp along with the otp to verify the user and get the access token
-	OtpReqToken string               `protobuf:"bytes,1,opt,name=otpReqToken,proto3" json:"otpReqToken,omitempty"`
-	ValidTill   *timestamp.Timestamp `protobuf:"bytes,2,opt,name=validTill,proto3" json:"validTill,omitempty"`
-}
-
-func (x *SendOtpResp) Reset() {
-	*x = SendOtpResp{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_auth_service_proto_msgTypes[1]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SendOtpResp) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SendOtpResp) ProtoMessage() {}
-
-func (x *SendOtpResp) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_service_proto_msgTypes[1]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SendOtpResp.ProtoReflect.Descriptor instead.
-func (*SendOtpResp) Descriptor() ([]byte, []int) {
-	return file_auth_service_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *SendOtpResp) GetOtpReqToken() string {
-	if x != nil {
-		return x.OtpReqToken
-	}
-	return ""
-}
-
-func (x *SendOtpResp) GetValidTill() *timestamp.Timestamp {
-	if x != nil {
-		return x.ValidTill
-	}
-	return nil
 }
 
 type VerifyOtpReq struct {
@@ -137,7 +270,7 @@ type VerifyOtpReq struct {
 func (x *VerifyOtpReq) Reset() {
 	*x = VerifyOtpReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_auth_service_proto_msgTypes[2]
+		mi := &file_auth_service_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -150,7 +283,7 @@ func (x *VerifyOtpReq) String() string {
 func (*VerifyOtpReq) ProtoMessage() {}
 
 func (x *VerifyOtpReq) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_service_proto_msgTypes[2]
+	mi := &file_auth_service_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -163,7 +296,7 @@ func (x *VerifyOtpReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use VerifyOtpReq.ProtoReflect.Descriptor instead.
 func (*VerifyOtpReq) Descriptor() ([]byte, []int) {
-	return file_auth_service_proto_rawDescGZIP(), []int{2}
+	return file_auth_service_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *VerifyOtpReq) GetOtpReqToken() string {
@@ -180,188 +313,51 @@ func (x *VerifyOtpReq) GetOtp() string {
 	return ""
 }
 
-type VerifyOtpResp struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	AccessToken string `protobuf:"bytes,1,opt,name=accessToken,proto3" json:"accessToken,omitempty"`
-}
-
-func (x *VerifyOtpResp) Reset() {
-	*x = VerifyOtpResp{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_auth_service_proto_msgTypes[3]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *VerifyOtpResp) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*VerifyOtpResp) ProtoMessage() {}
-
-func (x *VerifyOtpResp) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_service_proto_msgTypes[3]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use VerifyOtpResp.ProtoReflect.Descriptor instead.
-func (*VerifyOtpResp) Descriptor() ([]byte, []int) {
-	return file_auth_service_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *VerifyOtpResp) GetAccessToken() string {
-	if x != nil {
-		return x.AccessToken
-	}
-	return ""
-}
-
-type GetSessionTokenReq struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	AccessToken string `protobuf:"bytes,1,opt,name=accessToken,proto3" json:"accessToken,omitempty"`
-}
-
-func (x *GetSessionTokenReq) Reset() {
-	*x = GetSessionTokenReq{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_auth_service_proto_msgTypes[4]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *GetSessionTokenReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetSessionTokenReq) ProtoMessage() {}
-
-func (x *GetSessionTokenReq) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_service_proto_msgTypes[4]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetSessionTokenReq.ProtoReflect.Descriptor instead.
-func (*GetSessionTokenReq) Descriptor() ([]byte, []int) {
-	return file_auth_service_proto_rawDescGZIP(), []int{4}
-}
-
-func (x *GetSessionTokenReq) GetAccessToken() string {
-	if x != nil {
-		return x.AccessToken
-	}
-	return ""
-}
-
-type GetSessionTokenResp struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	SessionToken string `protobuf:"bytes,1,opt,name=sessionToken,proto3" json:"sessionToken,omitempty"`
-}
-
-func (x *GetSessionTokenResp) Reset() {
-	*x = GetSessionTokenResp{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_auth_service_proto_msgTypes[5]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *GetSessionTokenResp) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetSessionTokenResp) ProtoMessage() {}
-
-func (x *GetSessionTokenResp) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_service_proto_msgTypes[5]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetSessionTokenResp.ProtoReflect.Descriptor instead.
-func (*GetSessionTokenResp) Descriptor() ([]byte, []int) {
-	return file_auth_service_proto_rawDescGZIP(), []int{5}
-}
-
-func (x *GetSessionTokenResp) GetSessionToken() string {
-	if x != nil {
-		return x.SessionToken
-	}
-	return ""
-}
-
 var File_auth_service_proto protoreflect.FileDescriptor
 
 var file_auth_service_proto_rawDesc = []byte{
 	0x0a, 0x12, 0x61, 0x75, 0x74, 0x68, 0x5f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x70,
 	0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x1f, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x70, 0x72, 0x6f,
 	0x74, 0x6f, 0x62, 0x75, 0x66, 0x2f, 0x74, 0x69, 0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x2e,
-	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x2e, 0x0a, 0x0a, 0x53, 0x65, 0x6e, 0x64, 0x4f, 0x74, 0x70,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x76, 0x0a, 0x0c, 0x41, 0x63, 0x63, 0x65, 0x73, 0x73, 0x43,
+	0x6c, 0x61, 0x69, 0x6d, 0x73, 0x12, 0x16, 0x0a, 0x06, 0x75, 0x73, 0x65, 0x72, 0x49, 0x64, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x06, 0x75, 0x73, 0x65, 0x72, 0x49, 0x64, 0x12, 0x20, 0x0a,
+	0x0b, 0x70, 0x68, 0x6f, 0x6e, 0x65, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x18, 0x02, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x0b, 0x70, 0x68, 0x6f, 0x6e, 0x65, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x12,
+	0x2c, 0x0a, 0x03, 0x69, 0x61, 0x74, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x67,
+	0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x54,
+	0x69, 0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x52, 0x03, 0x69, 0x61, 0x74, 0x22, 0x77, 0x0a,
+	0x0d, 0x53, 0x65, 0x73, 0x73, 0x69, 0x6f, 0x6e, 0x43, 0x6c, 0x61, 0x69, 0x6d, 0x73, 0x12, 0x16,
+	0x0a, 0x06, 0x75, 0x73, 0x65, 0x72, 0x49, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x06,
+	0x75, 0x73, 0x65, 0x72, 0x49, 0x64, 0x12, 0x20, 0x0a, 0x0b, 0x70, 0x68, 0x6f, 0x6e, 0x65, 0x4e,
+	0x75, 0x6d, 0x62, 0x65, 0x72, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x70, 0x68, 0x6f,
+	0x6e, 0x65, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x12, 0x2c, 0x0a, 0x03, 0x69, 0x61, 0x74, 0x18,
+	0x03, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d,
+	0x70, 0x52, 0x03, 0x69, 0x61, 0x74, 0x22, 0x6d, 0x0a, 0x09, 0x4f, 0x74, 0x70, 0x43, 0x6c, 0x61,
+	0x69, 0x6d, 0x73, 0x12, 0x10, 0x0a, 0x03, 0x6f, 0x74, 0x70, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x03, 0x6f, 0x74, 0x70, 0x12, 0x20, 0x0a, 0x0b, 0x70, 0x68, 0x6f, 0x6e, 0x65, 0x4e, 0x75,
+	0x6d, 0x62, 0x65, 0x72, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x70, 0x68, 0x6f, 0x6e,
+	0x65, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x12, 0x2c, 0x0a, 0x03, 0x69, 0x61, 0x74, 0x18, 0x03,
+	0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72,
+	0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70,
+	0x52, 0x03, 0x69, 0x61, 0x74, 0x22, 0x2e, 0x0a, 0x0a, 0x53, 0x65, 0x6e, 0x64, 0x4f, 0x74, 0x70,
 	0x52, 0x65, 0x71, 0x12, 0x20, 0x0a, 0x0b, 0x70, 0x68, 0x6f, 0x6e, 0x65, 0x4e, 0x75, 0x6d, 0x62,
 	0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x70, 0x68, 0x6f, 0x6e, 0x65, 0x4e,
-	0x75, 0x6d, 0x62, 0x65, 0x72, 0x22, 0x69, 0x0a, 0x0b, 0x53, 0x65, 0x6e, 0x64, 0x4f, 0x74, 0x70,
-	0x52, 0x65, 0x73, 0x70, 0x12, 0x20, 0x0a, 0x0b, 0x6f, 0x74, 0x70, 0x52, 0x65, 0x71, 0x54, 0x6f,
-	0x6b, 0x65, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x6f, 0x74, 0x70, 0x52, 0x65,
-	0x71, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x12, 0x38, 0x0a, 0x09, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x54,
-	0x69, 0x6c, 0x6c, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x67, 0x6f, 0x6f, 0x67,
-	0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x54, 0x69, 0x6d, 0x65,
-	0x73, 0x74, 0x61, 0x6d, 0x70, 0x52, 0x09, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x54, 0x69, 0x6c, 0x6c,
-	0x22, 0x42, 0x0a, 0x0c, 0x56, 0x65, 0x72, 0x69, 0x66, 0x79, 0x4f, 0x74, 0x70, 0x52, 0x65, 0x71,
-	0x12, 0x20, 0x0a, 0x0b, 0x6f, 0x74, 0x70, 0x52, 0x65, 0x71, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x18,
-	0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x6f, 0x74, 0x70, 0x52, 0x65, 0x71, 0x54, 0x6f, 0x6b,
-	0x65, 0x6e, 0x12, 0x10, 0x0a, 0x03, 0x6f, 0x74, 0x70, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x03, 0x6f, 0x74, 0x70, 0x22, 0x31, 0x0a, 0x0d, 0x56, 0x65, 0x72, 0x69, 0x66, 0x79, 0x4f, 0x74,
-	0x70, 0x52, 0x65, 0x73, 0x70, 0x12, 0x20, 0x0a, 0x0b, 0x61, 0x63, 0x63, 0x65, 0x73, 0x73, 0x54,
-	0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x61, 0x63, 0x63, 0x65,
-	0x73, 0x73, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x22, 0x36, 0x0a, 0x12, 0x47, 0x65, 0x74, 0x53, 0x65,
-	0x73, 0x73, 0x69, 0x6f, 0x6e, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x52, 0x65, 0x71, 0x12, 0x20, 0x0a,
-	0x0b, 0x61, 0x63, 0x63, 0x65, 0x73, 0x73, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x01, 0x20, 0x01,
-	0x28, 0x09, 0x52, 0x0b, 0x61, 0x63, 0x63, 0x65, 0x73, 0x73, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x22,
-	0x39, 0x0a, 0x13, 0x47, 0x65, 0x74, 0x53, 0x65, 0x73, 0x73, 0x69, 0x6f, 0x6e, 0x54, 0x6f, 0x6b,
-	0x65, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x12, 0x22, 0x0a, 0x0c, 0x73, 0x65, 0x73, 0x73, 0x69, 0x6f,
-	0x6e, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x73, 0x65,
-	0x73, 0x73, 0x69, 0x6f, 0x6e, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x32, 0x9d, 0x01, 0x0a, 0x0b, 0x41,
-	0x75, 0x74, 0x68, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x24, 0x0a, 0x07, 0x53, 0x65,
-	0x6e, 0x64, 0x4f, 0x74, 0x70, 0x12, 0x0b, 0x2e, 0x53, 0x65, 0x6e, 0x64, 0x4f, 0x74, 0x70, 0x52,
-	0x65, 0x71, 0x1a, 0x0c, 0x2e, 0x53, 0x65, 0x6e, 0x64, 0x4f, 0x74, 0x70, 0x52, 0x65, 0x73, 0x70,
-	0x12, 0x2a, 0x0a, 0x09, 0x56, 0x65, 0x72, 0x69, 0x66, 0x79, 0x4f, 0x74, 0x70, 0x12, 0x0d, 0x2e,
-	0x56, 0x65, 0x72, 0x69, 0x66, 0x79, 0x4f, 0x74, 0x70, 0x52, 0x65, 0x71, 0x1a, 0x0e, 0x2e, 0x56,
-	0x65, 0x72, 0x69, 0x66, 0x79, 0x4f, 0x74, 0x70, 0x52, 0x65, 0x73, 0x70, 0x12, 0x3c, 0x0a, 0x0f,
-	0x47, 0x65, 0x74, 0x53, 0x65, 0x73, 0x73, 0x69, 0x6f, 0x6e, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x12,
-	0x13, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x65, 0x73, 0x73, 0x69, 0x6f, 0x6e, 0x54, 0x6f, 0x6b, 0x65,
-	0x6e, 0x52, 0x65, 0x71, 0x1a, 0x14, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x65, 0x73, 0x73, 0x69, 0x6f,
-	0x6e, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x42, 0x13, 0x5a, 0x11, 0x2e, 0x2f,
+	0x75, 0x6d, 0x62, 0x65, 0x72, 0x22, 0x42, 0x0a, 0x0c, 0x56, 0x65, 0x72, 0x69, 0x66, 0x79, 0x4f,
+	0x74, 0x70, 0x52, 0x65, 0x71, 0x12, 0x20, 0x0a, 0x0b, 0x6f, 0x74, 0x70, 0x52, 0x65, 0x71, 0x54,
+	0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x6f, 0x74, 0x70, 0x52,
+	0x65, 0x71, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x12, 0x10, 0x0a, 0x03, 0x6f, 0x74, 0x70, 0x18, 0x02,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6f, 0x74, 0x70, 0x32, 0x8e, 0x01, 0x0a, 0x0b, 0x41, 0x75,
+	0x74, 0x68, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x22, 0x0a, 0x07, 0x53, 0x65, 0x6e,
+	0x64, 0x4f, 0x74, 0x70, 0x12, 0x0b, 0x2e, 0x53, 0x65, 0x6e, 0x64, 0x4f, 0x74, 0x70, 0x52, 0x65,
+	0x71, 0x1a, 0x0a, 0x2e, 0x4f, 0x74, 0x70, 0x43, 0x6c, 0x61, 0x69, 0x6d, 0x73, 0x12, 0x29, 0x0a,
+	0x09, 0x56, 0x65, 0x72, 0x69, 0x66, 0x79, 0x4f, 0x74, 0x70, 0x12, 0x0d, 0x2e, 0x56, 0x65, 0x72,
+	0x69, 0x66, 0x79, 0x4f, 0x74, 0x70, 0x52, 0x65, 0x71, 0x1a, 0x0d, 0x2e, 0x41, 0x63, 0x63, 0x65,
+	0x73, 0x73, 0x43, 0x6c, 0x61, 0x69, 0x6d, 0x73, 0x12, 0x30, 0x0a, 0x0f, 0x47, 0x65, 0x74, 0x53,
+	0x65, 0x73, 0x73, 0x69, 0x6f, 0x6e, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x12, 0x0d, 0x2e, 0x41, 0x63,
+	0x63, 0x65, 0x73, 0x73, 0x43, 0x6c, 0x61, 0x69, 0x6d, 0x73, 0x1a, 0x0e, 0x2e, 0x53, 0x65, 0x73,
+	0x73, 0x69, 0x6f, 0x6e, 0x43, 0x6c, 0x61, 0x69, 0x6d, 0x73, 0x42, 0x13, 0x5a, 0x11, 0x2e, 0x2f,
 	0x67, 0x6f, 0x2f, 0x61, 0x75, 0x74, 0x68, 0x5f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x62,
 	0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
@@ -378,29 +374,30 @@ func file_auth_service_proto_rawDescGZIP() []byte {
 	return file_auth_service_proto_rawDescData
 }
 
-var file_auth_service_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_auth_service_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_auth_service_proto_goTypes = []any{
-	(*SendOtpReq)(nil),          // 0: SendOtpReq
-	(*SendOtpResp)(nil),         // 1: SendOtpResp
-	(*VerifyOtpReq)(nil),        // 2: VerifyOtpReq
-	(*VerifyOtpResp)(nil),       // 3: VerifyOtpResp
-	(*GetSessionTokenReq)(nil),  // 4: GetSessionTokenReq
-	(*GetSessionTokenResp)(nil), // 5: GetSessionTokenResp
-	(*timestamp.Timestamp)(nil), // 6: google.protobuf.Timestamp
+	(*AccessClaims)(nil),        // 0: AccessClaims
+	(*SessionClaims)(nil),       // 1: SessionClaims
+	(*OtpClaims)(nil),           // 2: OtpClaims
+	(*SendOtpReq)(nil),          // 3: SendOtpReq
+	(*VerifyOtpReq)(nil),        // 4: VerifyOtpReq
+	(*timestamp.Timestamp)(nil), // 5: google.protobuf.Timestamp
 }
 var file_auth_service_proto_depIdxs = []int32{
-	6, // 0: SendOtpResp.validTill:type_name -> google.protobuf.Timestamp
-	0, // 1: AuthService.SendOtp:input_type -> SendOtpReq
-	2, // 2: AuthService.VerifyOtp:input_type -> VerifyOtpReq
-	4, // 3: AuthService.GetSessionToken:input_type -> GetSessionTokenReq
-	1, // 4: AuthService.SendOtp:output_type -> SendOtpResp
-	3, // 5: AuthService.VerifyOtp:output_type -> VerifyOtpResp
-	5, // 6: AuthService.GetSessionToken:output_type -> GetSessionTokenResp
-	4, // [4:7] is the sub-list for method output_type
-	1, // [1:4] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	5, // 0: AccessClaims.iat:type_name -> google.protobuf.Timestamp
+	5, // 1: SessionClaims.iat:type_name -> google.protobuf.Timestamp
+	5, // 2: OtpClaims.iat:type_name -> google.protobuf.Timestamp
+	3, // 3: AuthService.SendOtp:input_type -> SendOtpReq
+	4, // 4: AuthService.VerifyOtp:input_type -> VerifyOtpReq
+	0, // 5: AuthService.GetSessionToken:input_type -> AccessClaims
+	2, // 6: AuthService.SendOtp:output_type -> OtpClaims
+	0, // 7: AuthService.VerifyOtp:output_type -> AccessClaims
+	1, // 8: AuthService.GetSessionToken:output_type -> SessionClaims
+	6, // [6:9] is the sub-list for method output_type
+	3, // [3:6] is the sub-list for method input_type
+	3, // [3:3] is the sub-list for extension type_name
+	3, // [3:3] is the sub-list for extension extendee
+	0, // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_auth_service_proto_init() }
@@ -410,7 +407,7 @@ func file_auth_service_proto_init() {
 	}
 	if !protoimpl.UnsafeEnabled {
 		file_auth_service_proto_msgTypes[0].Exporter = func(v any, i int) any {
-			switch v := v.(*SendOtpReq); i {
+			switch v := v.(*AccessClaims); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -422,7 +419,7 @@ func file_auth_service_proto_init() {
 			}
 		}
 		file_auth_service_proto_msgTypes[1].Exporter = func(v any, i int) any {
-			switch v := v.(*SendOtpResp); i {
+			switch v := v.(*SessionClaims); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -434,7 +431,7 @@ func file_auth_service_proto_init() {
 			}
 		}
 		file_auth_service_proto_msgTypes[2].Exporter = func(v any, i int) any {
-			switch v := v.(*VerifyOtpReq); i {
+			switch v := v.(*OtpClaims); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -446,7 +443,7 @@ func file_auth_service_proto_init() {
 			}
 		}
 		file_auth_service_proto_msgTypes[3].Exporter = func(v any, i int) any {
-			switch v := v.(*VerifyOtpResp); i {
+			switch v := v.(*SendOtpReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -458,19 +455,7 @@ func file_auth_service_proto_init() {
 			}
 		}
 		file_auth_service_proto_msgTypes[4].Exporter = func(v any, i int) any {
-			switch v := v.(*GetSessionTokenReq); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_auth_service_proto_msgTypes[5].Exporter = func(v any, i int) any {
-			switch v := v.(*GetSessionTokenResp); i {
+			switch v := v.(*VerifyOtpReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -488,7 +473,7 @@ func file_auth_service_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_auth_service_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   6,
+			NumMessages:   5,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

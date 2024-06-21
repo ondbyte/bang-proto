@@ -29,11 +29,11 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type AuthServiceClient interface {
 	// sends otp based on the request data
-	SendOtp(ctx context.Context, in *SendOtpReq, opts ...grpc.CallOption) (*SendOtpResp, error)
+	SendOtp(ctx context.Context, in *SendOtpReq, opts ...grpc.CallOption) (*OtpClaims, error)
 	// verify the otp
-	VerifyOtp(ctx context.Context, in *VerifyOtpReq, opts ...grpc.CallOption) (*VerifyOtpResp, error)
+	VerifyOtp(ctx context.Context, in *VerifyOtpReq, opts ...grpc.CallOption) (*AccessClaims, error)
 	// get session token
-	GetSessionToken(ctx context.Context, in *GetSessionTokenReq, opts ...grpc.CallOption) (*GetSessionTokenResp, error)
+	GetSessionToken(ctx context.Context, in *AccessClaims, opts ...grpc.CallOption) (*SessionClaims, error)
 }
 
 type authServiceClient struct {
@@ -44,9 +44,9 @@ func NewAuthServiceClient(cc grpc.ClientConnInterface) AuthServiceClient {
 	return &authServiceClient{cc}
 }
 
-func (c *authServiceClient) SendOtp(ctx context.Context, in *SendOtpReq, opts ...grpc.CallOption) (*SendOtpResp, error) {
+func (c *authServiceClient) SendOtp(ctx context.Context, in *SendOtpReq, opts ...grpc.CallOption) (*OtpClaims, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(SendOtpResp)
+	out := new(OtpClaims)
 	err := c.cc.Invoke(ctx, AuthService_SendOtp_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -54,9 +54,9 @@ func (c *authServiceClient) SendOtp(ctx context.Context, in *SendOtpReq, opts ..
 	return out, nil
 }
 
-func (c *authServiceClient) VerifyOtp(ctx context.Context, in *VerifyOtpReq, opts ...grpc.CallOption) (*VerifyOtpResp, error) {
+func (c *authServiceClient) VerifyOtp(ctx context.Context, in *VerifyOtpReq, opts ...grpc.CallOption) (*AccessClaims, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(VerifyOtpResp)
+	out := new(AccessClaims)
 	err := c.cc.Invoke(ctx, AuthService_VerifyOtp_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -64,9 +64,9 @@ func (c *authServiceClient) VerifyOtp(ctx context.Context, in *VerifyOtpReq, opt
 	return out, nil
 }
 
-func (c *authServiceClient) GetSessionToken(ctx context.Context, in *GetSessionTokenReq, opts ...grpc.CallOption) (*GetSessionTokenResp, error) {
+func (c *authServiceClient) GetSessionToken(ctx context.Context, in *AccessClaims, opts ...grpc.CallOption) (*SessionClaims, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetSessionTokenResp)
+	out := new(SessionClaims)
 	err := c.cc.Invoke(ctx, AuthService_GetSessionToken_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -79,11 +79,11 @@ func (c *authServiceClient) GetSessionToken(ctx context.Context, in *GetSessionT
 // for forward compatibility
 type AuthServiceServer interface {
 	// sends otp based on the request data
-	SendOtp(context.Context, *SendOtpReq) (*SendOtpResp, error)
+	SendOtp(context.Context, *SendOtpReq) (*OtpClaims, error)
 	// verify the otp
-	VerifyOtp(context.Context, *VerifyOtpReq) (*VerifyOtpResp, error)
+	VerifyOtp(context.Context, *VerifyOtpReq) (*AccessClaims, error)
 	// get session token
-	GetSessionToken(context.Context, *GetSessionTokenReq) (*GetSessionTokenResp, error)
+	GetSessionToken(context.Context, *AccessClaims) (*SessionClaims, error)
 	mustEmbedUnimplementedAuthServiceServer()
 }
 
@@ -91,13 +91,13 @@ type AuthServiceServer interface {
 type UnimplementedAuthServiceServer struct {
 }
 
-func (UnimplementedAuthServiceServer) SendOtp(context.Context, *SendOtpReq) (*SendOtpResp, error) {
+func (UnimplementedAuthServiceServer) SendOtp(context.Context, *SendOtpReq) (*OtpClaims, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SendOtp not implemented")
 }
-func (UnimplementedAuthServiceServer) VerifyOtp(context.Context, *VerifyOtpReq) (*VerifyOtpResp, error) {
+func (UnimplementedAuthServiceServer) VerifyOtp(context.Context, *VerifyOtpReq) (*AccessClaims, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method VerifyOtp not implemented")
 }
-func (UnimplementedAuthServiceServer) GetSessionToken(context.Context, *GetSessionTokenReq) (*GetSessionTokenResp, error) {
+func (UnimplementedAuthServiceServer) GetSessionToken(context.Context, *AccessClaims) (*SessionClaims, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetSessionToken not implemented")
 }
 func (UnimplementedAuthServiceServer) mustEmbedUnimplementedAuthServiceServer() {}
@@ -150,7 +150,7 @@ func _AuthService_VerifyOtp_Handler(srv interface{}, ctx context.Context, dec fu
 }
 
 func _AuthService_GetSessionToken_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetSessionTokenReq)
+	in := new(AccessClaims)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -162,7 +162,7 @@ func _AuthService_GetSessionToken_Handler(srv interface{}, ctx context.Context, 
 		FullMethod: AuthService_GetSessionToken_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthServiceServer).GetSessionToken(ctx, req.(*GetSessionTokenReq))
+		return srv.(AuthServiceServer).GetSessionToken(ctx, req.(*AccessClaims))
 	}
 	return interceptor(ctx, in, info, handler)
 }

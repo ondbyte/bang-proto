@@ -11,9 +11,250 @@
 
 import 'dart:core' as $core;
 
+import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'google/protobuf/timestamp.pb.dart' as $1;
+
+class AccessClaims extends $pb.GeneratedMessage {
+  factory AccessClaims({
+    $fixnum.Int64? userId,
+    $core.String? phoneNumber,
+    $1.Timestamp? iat,
+  }) {
+    final $result = create();
+    if (userId != null) {
+      $result.userId = userId;
+    }
+    if (phoneNumber != null) {
+      $result.phoneNumber = phoneNumber;
+    }
+    if (iat != null) {
+      $result.iat = iat;
+    }
+    return $result;
+  }
+  AccessClaims._() : super();
+  factory AccessClaims.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory AccessClaims.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'AccessClaims', createEmptyInstance: create)
+    ..aInt64(1, _omitFieldNames ? '' : 'userId', protoName: 'userId')
+    ..aOS(2, _omitFieldNames ? '' : 'phoneNumber', protoName: 'phoneNumber')
+    ..aOM<$1.Timestamp>(3, _omitFieldNames ? '' : 'iat', subBuilder: $1.Timestamp.create)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  AccessClaims clone() => AccessClaims()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  AccessClaims copyWith(void Function(AccessClaims) updates) => super.copyWith((message) => updates(message as AccessClaims)) as AccessClaims;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static AccessClaims create() => AccessClaims._();
+  AccessClaims createEmptyInstance() => create();
+  static $pb.PbList<AccessClaims> createRepeated() => $pb.PbList<AccessClaims>();
+  @$core.pragma('dart2js:noInline')
+  static AccessClaims getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<AccessClaims>(create);
+  static AccessClaims? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $fixnum.Int64 get userId => $_getI64(0);
+  @$pb.TagNumber(1)
+  set userId($fixnum.Int64 v) { $_setInt64(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasUserId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearUserId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get phoneNumber => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set phoneNumber($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasPhoneNumber() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearPhoneNumber() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $1.Timestamp get iat => $_getN(2);
+  @$pb.TagNumber(3)
+  set iat($1.Timestamp v) { setField(3, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasIat() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearIat() => clearField(3);
+  @$pb.TagNumber(3)
+  $1.Timestamp ensureIat() => $_ensure(2);
+}
+
+class SessionClaims extends $pb.GeneratedMessage {
+  factory SessionClaims({
+    $fixnum.Int64? userId,
+    $core.String? phoneNumber,
+    $1.Timestamp? iat,
+  }) {
+    final $result = create();
+    if (userId != null) {
+      $result.userId = userId;
+    }
+    if (phoneNumber != null) {
+      $result.phoneNumber = phoneNumber;
+    }
+    if (iat != null) {
+      $result.iat = iat;
+    }
+    return $result;
+  }
+  SessionClaims._() : super();
+  factory SessionClaims.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory SessionClaims.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SessionClaims', createEmptyInstance: create)
+    ..aInt64(1, _omitFieldNames ? '' : 'userId', protoName: 'userId')
+    ..aOS(2, _omitFieldNames ? '' : 'phoneNumber', protoName: 'phoneNumber')
+    ..aOM<$1.Timestamp>(3, _omitFieldNames ? '' : 'iat', subBuilder: $1.Timestamp.create)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  SessionClaims clone() => SessionClaims()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  SessionClaims copyWith(void Function(SessionClaims) updates) => super.copyWith((message) => updates(message as SessionClaims)) as SessionClaims;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static SessionClaims create() => SessionClaims._();
+  SessionClaims createEmptyInstance() => create();
+  static $pb.PbList<SessionClaims> createRepeated() => $pb.PbList<SessionClaims>();
+  @$core.pragma('dart2js:noInline')
+  static SessionClaims getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SessionClaims>(create);
+  static SessionClaims? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $fixnum.Int64 get userId => $_getI64(0);
+  @$pb.TagNumber(1)
+  set userId($fixnum.Int64 v) { $_setInt64(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasUserId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearUserId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get phoneNumber => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set phoneNumber($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasPhoneNumber() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearPhoneNumber() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $1.Timestamp get iat => $_getN(2);
+  @$pb.TagNumber(3)
+  set iat($1.Timestamp v) { setField(3, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasIat() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearIat() => clearField(3);
+  @$pb.TagNumber(3)
+  $1.Timestamp ensureIat() => $_ensure(2);
+}
+
+class OtpClaims extends $pb.GeneratedMessage {
+  factory OtpClaims({
+    $core.String? otp,
+    $core.String? phoneNumber,
+    $1.Timestamp? iat,
+  }) {
+    final $result = create();
+    if (otp != null) {
+      $result.otp = otp;
+    }
+    if (phoneNumber != null) {
+      $result.phoneNumber = phoneNumber;
+    }
+    if (iat != null) {
+      $result.iat = iat;
+    }
+    return $result;
+  }
+  OtpClaims._() : super();
+  factory OtpClaims.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory OtpClaims.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'OtpClaims', createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'otp')
+    ..aOS(2, _omitFieldNames ? '' : 'phoneNumber', protoName: 'phoneNumber')
+    ..aOM<$1.Timestamp>(3, _omitFieldNames ? '' : 'iat', subBuilder: $1.Timestamp.create)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  OtpClaims clone() => OtpClaims()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  OtpClaims copyWith(void Function(OtpClaims) updates) => super.copyWith((message) => updates(message as OtpClaims)) as OtpClaims;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static OtpClaims create() => OtpClaims._();
+  OtpClaims createEmptyInstance() => create();
+  static $pb.PbList<OtpClaims> createRepeated() => $pb.PbList<OtpClaims>();
+  @$core.pragma('dart2js:noInline')
+  static OtpClaims getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<OtpClaims>(create);
+  static OtpClaims? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get otp => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set otp($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasOtp() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearOtp() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get phoneNumber => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set phoneNumber($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasPhoneNumber() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearPhoneNumber() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $1.Timestamp get iat => $_getN(2);
+  @$pb.TagNumber(3)
+  set iat($1.Timestamp v) { setField(3, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasIat() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearIat() => clearField(3);
+  @$pb.TagNumber(3)
+  $1.Timestamp ensureIat() => $_ensure(2);
+}
 
 class SendOtpReq extends $pb.GeneratedMessage {
   factory SendOtpReq({
@@ -64,73 +305,6 @@ class SendOtpReq extends $pb.GeneratedMessage {
   $core.bool hasPhoneNumber() => $_has(0);
   @$pb.TagNumber(1)
   void clearPhoneNumber() => clearField(1);
-}
-
-class SendOtpResp extends $pb.GeneratedMessage {
-  factory SendOtpResp({
-    $core.String? otpReqToken,
-    $1.Timestamp? validTill,
-  }) {
-    final $result = create();
-    if (otpReqToken != null) {
-      $result.otpReqToken = otpReqToken;
-    }
-    if (validTill != null) {
-      $result.validTill = validTill;
-    }
-    return $result;
-  }
-  SendOtpResp._() : super();
-  factory SendOtpResp.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory SendOtpResp.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SendOtpResp', createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'otpReqToken', protoName: 'otpReqToken')
-    ..aOM<$1.Timestamp>(2, _omitFieldNames ? '' : 'validTill', protoName: 'validTill', subBuilder: $1.Timestamp.create)
-    ..hasRequiredFields = false
-  ;
-
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  SendOtpResp clone() => SendOtpResp()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  SendOtpResp copyWith(void Function(SendOtpResp) updates) => super.copyWith((message) => updates(message as SendOtpResp)) as SendOtpResp;
-
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static SendOtpResp create() => SendOtpResp._();
-  SendOtpResp createEmptyInstance() => create();
-  static $pb.PbList<SendOtpResp> createRepeated() => $pb.PbList<SendOtpResp>();
-  @$core.pragma('dart2js:noInline')
-  static SendOtpResp getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SendOtpResp>(create);
-  static SendOtpResp? _defaultInstance;
-
-  /// send this token in the call to the VerifyOtp along with the otp to verify the user and get the access token
-  @$pb.TagNumber(1)
-  $core.String get otpReqToken => $_getSZ(0);
-  @$pb.TagNumber(1)
-  set otpReqToken($core.String v) { $_setString(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasOtpReqToken() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearOtpReqToken() => clearField(1);
-
-  @$pb.TagNumber(2)
-  $1.Timestamp get validTill => $_getN(1);
-  @$pb.TagNumber(2)
-  set validTill($1.Timestamp v) { setField(2, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasValidTill() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearValidTill() => clearField(2);
-  @$pb.TagNumber(2)
-  $1.Timestamp ensureValidTill() => $_ensure(1);
 }
 
 class VerifyOtpReq extends $pb.GeneratedMessage {
@@ -195,156 +369,6 @@ class VerifyOtpReq extends $pb.GeneratedMessage {
   $core.bool hasOtp() => $_has(1);
   @$pb.TagNumber(2)
   void clearOtp() => clearField(2);
-}
-
-class VerifyOtpResp extends $pb.GeneratedMessage {
-  factory VerifyOtpResp({
-    $core.String? accessToken,
-  }) {
-    final $result = create();
-    if (accessToken != null) {
-      $result.accessToken = accessToken;
-    }
-    return $result;
-  }
-  VerifyOtpResp._() : super();
-  factory VerifyOtpResp.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory VerifyOtpResp.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'VerifyOtpResp', createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'accessToken', protoName: 'accessToken')
-    ..hasRequiredFields = false
-  ;
-
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  VerifyOtpResp clone() => VerifyOtpResp()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  VerifyOtpResp copyWith(void Function(VerifyOtpResp) updates) => super.copyWith((message) => updates(message as VerifyOtpResp)) as VerifyOtpResp;
-
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static VerifyOtpResp create() => VerifyOtpResp._();
-  VerifyOtpResp createEmptyInstance() => create();
-  static $pb.PbList<VerifyOtpResp> createRepeated() => $pb.PbList<VerifyOtpResp>();
-  @$core.pragma('dart2js:noInline')
-  static VerifyOtpResp getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<VerifyOtpResp>(create);
-  static VerifyOtpResp? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.String get accessToken => $_getSZ(0);
-  @$pb.TagNumber(1)
-  set accessToken($core.String v) { $_setString(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasAccessToken() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearAccessToken() => clearField(1);
-}
-
-class GetSessionTokenReq extends $pb.GeneratedMessage {
-  factory GetSessionTokenReq({
-    $core.String? accessToken,
-  }) {
-    final $result = create();
-    if (accessToken != null) {
-      $result.accessToken = accessToken;
-    }
-    return $result;
-  }
-  GetSessionTokenReq._() : super();
-  factory GetSessionTokenReq.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory GetSessionTokenReq.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'GetSessionTokenReq', createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'accessToken', protoName: 'accessToken')
-    ..hasRequiredFields = false
-  ;
-
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  GetSessionTokenReq clone() => GetSessionTokenReq()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  GetSessionTokenReq copyWith(void Function(GetSessionTokenReq) updates) => super.copyWith((message) => updates(message as GetSessionTokenReq)) as GetSessionTokenReq;
-
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static GetSessionTokenReq create() => GetSessionTokenReq._();
-  GetSessionTokenReq createEmptyInstance() => create();
-  static $pb.PbList<GetSessionTokenReq> createRepeated() => $pb.PbList<GetSessionTokenReq>();
-  @$core.pragma('dart2js:noInline')
-  static GetSessionTokenReq getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetSessionTokenReq>(create);
-  static GetSessionTokenReq? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.String get accessToken => $_getSZ(0);
-  @$pb.TagNumber(1)
-  set accessToken($core.String v) { $_setString(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasAccessToken() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearAccessToken() => clearField(1);
-}
-
-class GetSessionTokenResp extends $pb.GeneratedMessage {
-  factory GetSessionTokenResp({
-    $core.String? sessionToken,
-  }) {
-    final $result = create();
-    if (sessionToken != null) {
-      $result.sessionToken = sessionToken;
-    }
-    return $result;
-  }
-  GetSessionTokenResp._() : super();
-  factory GetSessionTokenResp.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory GetSessionTokenResp.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'GetSessionTokenResp', createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'sessionToken', protoName: 'sessionToken')
-    ..hasRequiredFields = false
-  ;
-
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  GetSessionTokenResp clone() => GetSessionTokenResp()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  GetSessionTokenResp copyWith(void Function(GetSessionTokenResp) updates) => super.copyWith((message) => updates(message as GetSessionTokenResp)) as GetSessionTokenResp;
-
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static GetSessionTokenResp create() => GetSessionTokenResp._();
-  GetSessionTokenResp createEmptyInstance() => create();
-  static $pb.PbList<GetSessionTokenResp> createRepeated() => $pb.PbList<GetSessionTokenResp>();
-  @$core.pragma('dart2js:noInline')
-  static GetSessionTokenResp getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetSessionTokenResp>(create);
-  static GetSessionTokenResp? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.String get sessionToken => $_getSZ(0);
-  @$pb.TagNumber(1)
-  set sessionToken($core.String v) { $_setString(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasSessionToken() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearSessionToken() => clearField(1);
 }
 
 
