@@ -21,10 +21,10 @@ export 'auth_service.pb.dart';
 
 @$pb.GrpcServiceName('AuthService')
 class AuthServiceClient extends $grpc.Client {
-  static final _$sendOtp = $grpc.ClientMethod<$0.SendOtpReq, $0.OtpClaims>(
+  static final _$sendOtp = $grpc.ClientMethod<$0.SendOtpReq, $0.OtpToken>(
       '/AuthService/SendOtp',
       ($0.SendOtpReq value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $0.OtpClaims.fromBuffer(value));
+      ($core.List<$core.int> value) => $0.OtpToken.fromBuffer(value));
   static final _$verifyOtp = $grpc.ClientMethod<$0.VerifyOtpReq, $0.AccessToken>(
       '/AuthService/VerifyOtp',
       ($0.VerifyOtpReq value) => value.writeToBuffer(),
@@ -40,7 +40,7 @@ class AuthServiceClient extends $grpc.Client {
       : super(channel, options: options,
         interceptors: interceptors);
 
-  $grpc.ResponseFuture<$0.OtpClaims> sendOtp($0.SendOtpReq request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$0.OtpToken> sendOtp($0.SendOtpReq request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$sendOtp, request, options: options);
   }
 
@@ -58,13 +58,13 @@ abstract class AuthServiceBase extends $grpc.Service {
   $core.String get $name => 'AuthService';
 
   AuthServiceBase() {
-    $addMethod($grpc.ServiceMethod<$0.SendOtpReq, $0.OtpClaims>(
+    $addMethod($grpc.ServiceMethod<$0.SendOtpReq, $0.OtpToken>(
         'SendOtp',
         sendOtp_Pre,
         false,
         false,
         ($core.List<$core.int> value) => $0.SendOtpReq.fromBuffer(value),
-        ($0.OtpClaims value) => value.writeToBuffer()));
+        ($0.OtpToken value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$0.VerifyOtpReq, $0.AccessToken>(
         'VerifyOtp',
         verifyOtp_Pre,
@@ -81,7 +81,7 @@ abstract class AuthServiceBase extends $grpc.Service {
         ($0.SessionToken value) => value.writeToBuffer()));
   }
 
-  $async.Future<$0.OtpClaims> sendOtp_Pre($grpc.ServiceCall call, $async.Future<$0.SendOtpReq> request) async {
+  $async.Future<$0.OtpToken> sendOtp_Pre($grpc.ServiceCall call, $async.Future<$0.SendOtpReq> request) async {
     return sendOtp(call, await request);
   }
 
@@ -93,7 +93,7 @@ abstract class AuthServiceBase extends $grpc.Service {
     return getSessionToken(call, await request);
   }
 
-  $async.Future<$0.OtpClaims> sendOtp($grpc.ServiceCall call, $0.SendOtpReq request);
+  $async.Future<$0.OtpToken> sendOtp($grpc.ServiceCall call, $0.SendOtpReq request);
   $async.Future<$0.AccessToken> verifyOtp($grpc.ServiceCall call, $0.VerifyOtpReq request);
   $async.Future<$0.SessionToken> getSessionToken($grpc.ServiceCall call, $0.AccessToken request);
 }

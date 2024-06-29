@@ -110,3 +110,15 @@ const SessionToken$json = {
 final $typed_data.Uint8List sessionTokenDescriptor = $convert.base64Decode(
     'CgxTZXNzaW9uVG9rZW4SFAoFdG9rZW4YASABKAlSBXRva2Vu');
 
+@$core.Deprecated('Use otpTokenDescriptor instead')
+const OtpToken$json = {
+  '1': 'OtpToken',
+  '2': [
+    {'1': 'token', '3': 1, '4': 1, '5': 9, '10': 'token'},
+  ],
+};
+
+/// Descriptor for `OtpToken`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List otpTokenDescriptor = $convert.base64Decode(
+    'CghPdHBUb2tlbhIUCgV0b2tlbhgBIAEoCVIFdG9rZW4=');
+

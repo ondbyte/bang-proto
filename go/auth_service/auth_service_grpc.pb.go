@@ -29,7 +29,7 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type AuthServiceClient interface {
 	// sends otp based on the request data
-	SendOtp(ctx context.Context, in *SendOtpReq, opts ...grpc.CallOption) (*OtpClaims, error)
+	SendOtp(ctx context.Context, in *SendOtpReq, opts ...grpc.CallOption) (*OtpToken, error)
 	// verify the otp
 	VerifyOtp(ctx context.Context, in *VerifyOtpReq, opts ...grpc.CallOption) (*AccessToken, error)
 	// get session token
@@ -44,9 +44,9 @@ func NewAuthServiceClient(cc grpc.ClientConnInterface) AuthServiceClient {
 	return &authServiceClient{cc}
 }
 
-func (c *authServiceClient) SendOtp(ctx context.Context, in *SendOtpReq, opts ...grpc.CallOption) (*OtpClaims, error) {
+func (c *authServiceClient) SendOtp(ctx context.Context, in *SendOtpReq, opts ...grpc.CallOption) (*OtpToken, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(OtpClaims)
+	out := new(OtpToken)
 	err := c.cc.Invoke(ctx, AuthService_SendOtp_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -79,7 +79,7 @@ func (c *authServiceClient) GetSessionToken(ctx context.Context, in *AccessToken
 // for forward compatibility
 type AuthServiceServer interface {
 	// sends otp based on the request data
-	SendOtp(context.Context, *SendOtpReq) (*OtpClaims, error)
+	SendOtp(context.Context, *SendOtpReq) (*OtpToken, error)
 	// verify the otp
 	VerifyOtp(context.Context, *VerifyOtpReq) (*AccessToken, error)
 	// get session token
@@ -91,7 +91,7 @@ type AuthServiceServer interface {
 type UnimplementedAuthServiceServer struct {
 }
 
-func (UnimplementedAuthServiceServer) SendOtp(context.Context, *SendOtpReq) (*OtpClaims, error) {
+func (UnimplementedAuthServiceServer) SendOtp(context.Context, *SendOtpReq) (*OtpToken, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SendOtp not implemented")
 }
 func (UnimplementedAuthServiceServer) VerifyOtp(context.Context, *VerifyOtpReq) (*AccessToken, error) {
