@@ -31,9 +31,9 @@ type AuthServiceClient interface {
 	// sends otp based on the request data
 	SendOtp(ctx context.Context, in *SendOtpReq, opts ...grpc.CallOption) (*OtpClaims, error)
 	// verify the otp
-	VerifyOtp(ctx context.Context, in *VerifyOtpReq, opts ...grpc.CallOption) (*AccessClaims, error)
+	VerifyOtp(ctx context.Context, in *VerifyOtpReq, opts ...grpc.CallOption) (*AccessToken, error)
 	// get session token
-	GetSessionToken(ctx context.Context, in *AccessClaims, opts ...grpc.CallOption) (*SessionClaims, error)
+	GetSessionToken(ctx context.Context, in *AccessToken, opts ...grpc.CallOption) (*SessionToken, error)
 }
 
 type authServiceClient struct {
@@ -54,9 +54,9 @@ func (c *authServiceClient) SendOtp(ctx context.Context, in *SendOtpReq, opts ..
 	return out, nil
 }
 
-func (c *authServiceClient) VerifyOtp(ctx context.Context, in *VerifyOtpReq, opts ...grpc.CallOption) (*AccessClaims, error) {
+func (c *authServiceClient) VerifyOtp(ctx context.Context, in *VerifyOtpReq, opts ...grpc.CallOption) (*AccessToken, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(AccessClaims)
+	out := new(AccessToken)
 	err := c.cc.Invoke(ctx, AuthService_VerifyOtp_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -64,9 +64,9 @@ func (c *authServiceClient) VerifyOtp(ctx context.Context, in *VerifyOtpReq, opt
 	return out, nil
 }
 
-func (c *authServiceClient) GetSessionToken(ctx context.Context, in *AccessClaims, opts ...grpc.CallOption) (*SessionClaims, error) {
+func (c *authServiceClient) GetSessionToken(ctx context.Context, in *AccessToken, opts ...grpc.CallOption) (*SessionToken, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(SessionClaims)
+	out := new(SessionToken)
 	err := c.cc.Invoke(ctx, AuthService_GetSessionToken_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -81,9 +81,9 @@ type AuthServiceServer interface {
 	// sends otp based on the request data
 	SendOtp(context.Context, *SendOtpReq) (*OtpClaims, error)
 	// verify the otp
-	VerifyOtp(context.Context, *VerifyOtpReq) (*AccessClaims, error)
+	VerifyOtp(context.Context, *VerifyOtpReq) (*AccessToken, error)
 	// get session token
-	GetSessionToken(context.Context, *AccessClaims) (*SessionClaims, error)
+	GetSessionToken(context.Context, *AccessToken) (*SessionToken, error)
 	mustEmbedUnimplementedAuthServiceServer()
 }
 
@@ -94,10 +94,10 @@ type UnimplementedAuthServiceServer struct {
 func (UnimplementedAuthServiceServer) SendOtp(context.Context, *SendOtpReq) (*OtpClaims, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SendOtp not implemented")
 }
-func (UnimplementedAuthServiceServer) VerifyOtp(context.Context, *VerifyOtpReq) (*AccessClaims, error) {
+func (UnimplementedAuthServiceServer) VerifyOtp(context.Context, *VerifyOtpReq) (*AccessToken, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method VerifyOtp not implemented")
 }
-func (UnimplementedAuthServiceServer) GetSessionToken(context.Context, *AccessClaims) (*SessionClaims, error) {
+func (UnimplementedAuthServiceServer) GetSessionToken(context.Context, *AccessToken) (*SessionToken, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetSessionToken not implemented")
 }
 func (UnimplementedAuthServiceServer) mustEmbedUnimplementedAuthServiceServer() {}
@@ -150,7 +150,7 @@ func _AuthService_VerifyOtp_Handler(srv interface{}, ctx context.Context, dec fu
 }
 
 func _AuthService_GetSessionToken_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AccessClaims)
+	in := new(AccessToken)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -162,7 +162,7 @@ func _AuthService_GetSessionToken_Handler(srv interface{}, ctx context.Context, 
 		FullMethod: AuthService_GetSessionToken_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthServiceServer).GetSessionToken(ctx, req.(*AccessClaims))
+		return srv.(AuthServiceServer).GetSessionToken(ctx, req.(*AccessToken))
 	}
 	return interceptor(ctx, in, info, handler)
 }

@@ -31,14 +31,21 @@ message VerifyOtpReq{
     string otpReqToken = 1;
     string otp = 2;
 }
+message AccessToken{
+    string token = 1;
+}
+
+message SessionToken {
+    string token = 1;
+}
 
 service AuthService{
     // sends otp based on the request data
     rpc SendOtp(SendOtpReq) returns (OtpClaims);
 
     // verify the otp
-    rpc VerifyOtp(VerifyOtpReq) returns (AccessClaims);
+    rpc VerifyOtp(VerifyOtpReq) returns (AccessToken);
 
     // get session token
-    rpc GetSessionToken(AccessClaims) returns (SessionClaims);
+    rpc GetSessionToken(AccessToken) returns (SessionToken);
 }

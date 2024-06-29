@@ -25,14 +25,14 @@ class AuthServiceClient extends $grpc.Client {
       '/AuthService/SendOtp',
       ($0.SendOtpReq value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.OtpClaims.fromBuffer(value));
-  static final _$verifyOtp = $grpc.ClientMethod<$0.VerifyOtpReq, $0.AccessClaims>(
+  static final _$verifyOtp = $grpc.ClientMethod<$0.VerifyOtpReq, $0.AccessToken>(
       '/AuthService/VerifyOtp',
       ($0.VerifyOtpReq value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $0.AccessClaims.fromBuffer(value));
-  static final _$getSessionToken = $grpc.ClientMethod<$0.AccessClaims, $0.SessionClaims>(
+      ($core.List<$core.int> value) => $0.AccessToken.fromBuffer(value));
+  static final _$getSessionToken = $grpc.ClientMethod<$0.AccessToken, $0.SessionToken>(
       '/AuthService/GetSessionToken',
-      ($0.AccessClaims value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $0.SessionClaims.fromBuffer(value));
+      ($0.AccessToken value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $0.SessionToken.fromBuffer(value));
 
   AuthServiceClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -44,11 +44,11 @@ class AuthServiceClient extends $grpc.Client {
     return $createUnaryCall(_$sendOtp, request, options: options);
   }
 
-  $grpc.ResponseFuture<$0.AccessClaims> verifyOtp($0.VerifyOtpReq request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$0.AccessToken> verifyOtp($0.VerifyOtpReq request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$verifyOtp, request, options: options);
   }
 
-  $grpc.ResponseFuture<$0.SessionClaims> getSessionToken($0.AccessClaims request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$0.SessionToken> getSessionToken($0.AccessToken request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getSessionToken, request, options: options);
   }
 }
@@ -65,35 +65,35 @@ abstract class AuthServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.SendOtpReq.fromBuffer(value),
         ($0.OtpClaims value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$0.VerifyOtpReq, $0.AccessClaims>(
+    $addMethod($grpc.ServiceMethod<$0.VerifyOtpReq, $0.AccessToken>(
         'VerifyOtp',
         verifyOtp_Pre,
         false,
         false,
         ($core.List<$core.int> value) => $0.VerifyOtpReq.fromBuffer(value),
-        ($0.AccessClaims value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$0.AccessClaims, $0.SessionClaims>(
+        ($0.AccessToken value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.AccessToken, $0.SessionToken>(
         'GetSessionToken',
         getSessionToken_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $0.AccessClaims.fromBuffer(value),
-        ($0.SessionClaims value) => value.writeToBuffer()));
+        ($core.List<$core.int> value) => $0.AccessToken.fromBuffer(value),
+        ($0.SessionToken value) => value.writeToBuffer()));
   }
 
   $async.Future<$0.OtpClaims> sendOtp_Pre($grpc.ServiceCall call, $async.Future<$0.SendOtpReq> request) async {
     return sendOtp(call, await request);
   }
 
-  $async.Future<$0.AccessClaims> verifyOtp_Pre($grpc.ServiceCall call, $async.Future<$0.VerifyOtpReq> request) async {
+  $async.Future<$0.AccessToken> verifyOtp_Pre($grpc.ServiceCall call, $async.Future<$0.VerifyOtpReq> request) async {
     return verifyOtp(call, await request);
   }
 
-  $async.Future<$0.SessionClaims> getSessionToken_Pre($grpc.ServiceCall call, $async.Future<$0.AccessClaims> request) async {
+  $async.Future<$0.SessionToken> getSessionToken_Pre($grpc.ServiceCall call, $async.Future<$0.AccessToken> request) async {
     return getSessionToken(call, await request);
   }
 
   $async.Future<$0.OtpClaims> sendOtp($grpc.ServiceCall call, $0.SendOtpReq request);
-  $async.Future<$0.AccessClaims> verifyOtp($grpc.ServiceCall call, $0.VerifyOtpReq request);
-  $async.Future<$0.SessionClaims> getSessionToken($grpc.ServiceCall call, $0.AccessClaims request);
+  $async.Future<$0.AccessToken> verifyOtp($grpc.ServiceCall call, $0.VerifyOtpReq request);
+  $async.Future<$0.SessionToken> getSessionToken($grpc.ServiceCall call, $0.AccessToken request);
 }
